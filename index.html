@@ -16,9 +16,12 @@
 
 
 <style>
-.box{width: 1200px;height: 370px;margin: 200px auto;}
-.bd{width: 1060px;height: 250px; text-align: center; position: relative;padding: 60px 0;}
-div.bd div{background: #092951; position:absolute;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;}
+body{
+	background: #092951;
+}
+.box{width: 520px;height: 250px; margin: 200px auto; /*border:1px solid #000;*/}
+.bd{width: 500px;height: 250px; text-align: center; position: relative;padding: 60px 0;/* border:1px solid #ffcc00;*/}
+div.bd div{background: #fff; position:absolute;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;}
 
 .active .bd div.bdT{width: 100%; height:1px; top:0; left:0;}
 .active .bd div.bdB{width: 100%; height:1px; bottom:0; right:0;}
@@ -31,7 +34,7 @@ div.bd div{background: #092951; position:absolute;-webkit-transition:all 1s ease
 .bd div.bdL{height:0;}
 
 .path{	/*ストロークの色や太さ*/
-	stroke:#092951;
+	stroke:#fff;
 	fill:none;
 	stroke-width:1;
 	/*破線*/
@@ -45,33 +48,40 @@ div.bd div{background: #092951; position:absolute;-webkit-transition:all 1s ease
 }
 
 @keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#fff;}
-    30% {stroke-dashoffset:2000;fill:#092951;}
-    100%{stroke-dashoffset:0;fill:#092951;}
+    0%  {stroke-dashoffset:3000;fill:#092951;}
+    30% {stroke-dashoffset:2000;fill:#fff;}
+    100%{stroke-dashoffset:0;fill:#fff;}
 }
 
 @-moz-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#fff;}
-    30% {stroke-dashoffset:2000;fill:#092951;}
-    100%{stroke-dashoffset:0;fill:#092951;}
+    0%  {stroke-dashoffset:3000;fill:#092951;}
+    30% {stroke-dashoffset:2000;fill:#fff;}
+    100%{stroke-dashoffset:0;fill:#fff;}
 }
 
 @-webkit-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#fff;}
-    30% {stroke-dashoffset:2000;fill:#092951;}
-    100%{stroke-dashoffset:0;fill:#092951;}
+    0%  {stroke-dashoffset:3000;fill:#092951;}
+    30% {stroke-dashoffset:2000;fill:#fff;}
+    100%{stroke-dashoffset:0;fill:#fff;}
 }
 
 @-o-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#fff;}
-    30% {stroke-dashoffset:2000;fill:#092951;}
-    100%{stroke-dashoffset:0;fill:#092951;}
+    0%  {stroke-dashoffset:3000;fill:#092951;}
+    30% {stroke-dashoffset:2000;fill:#fff;}
+    100%{stroke-dashoffset:0;fill:#fff;}
 }
 
 @-ms-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#fff;}
-    30% {stroke-dashoffset:2000;fill:#092951;}
-    100%{stroke-dashoffset:0;fill:#092951;}
+    0%  {stroke-dashoffset:3000;fill:#092951;}
+    30% {stroke-dashoffset:2000;fill:#fff;}
+    100%{stroke-dashoffset:0;fill:#fff;}
+}
+
+
+
+
+.guide{
+	/*border:1px solid #ff00cc;*/
 }
 </style>
 
@@ -80,8 +90,18 @@ div.bd div{background: #092951; position:absolute;-webkit-transition:all 1s ease
 <body>
 <div class="box">
 	<div class="bd">
-		<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-			 y="0px" viewBox="0 0 595.3 841.9" enable-background="new 0 0 595.3 841.9" xml:space="preserve">
+<svg
+	class="guide"
+	version="1.1"
+	id="レイヤー_1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0px"
+	y="0px"
+	viewBox="-35 -70 500 390"
+	xml:space="preserve"
+>
+
 		<g class="path">
 			<path d="M42,89.2l0.2-2.5L42,80.3h-0.5c-1.1,0.7-2.3,1.3-3.7,1.8c-1.4,0.5-2.7,0.9-4.2,0.9l-1.2-0.8L31,79l1.1-2.4l6.5-4.8v-0.4
 				l2.9-2.3v-1.7L41,65.8l-0.7-0.2L39.5,64h-0.8c-1.5,0.4-2.9,0.8-4.6,1.1c-1.6,0.3-3.3,0.5-5.1,0.5l-0.8-0.2v-0.3l0.8-0.8L28.9,64
@@ -180,7 +200,7 @@ div.bd div{background: #092951; position:absolute;-webkit-transition:all 1s ease
 				h-0.3l-2.6,4.9l-3,1.4v0.4c-0.3,0-0.7,0-1.1,0c-0.4-0.1-0.8,0.1-0.9,0.4V97.5z M370.1,50c0.5-0.3,0.8-0.9,0.9-1.4
 				c0-0.5,0-1.1,0-1.6h-0.2l-1.5,3.5h0.8L370.1,50z M372.4,32.2h-0.5l-1.2,2.5l1.3,1.5l0.3-0.2L372.4,32.2z"/>
 		</g>
-		<img src="./common/font/font.png" height="84" width="960" />
+		<!-- <img src="./common/font/font.png" height="84" width="960" /> -->
 		</svg>
 
 
@@ -191,6 +211,8 @@ div.bd div{background: #092951; position:absolute;-webkit-transition:all 1s ease
 	    <div class="bdL"></div>
 	</div><!-- .bd -->
 </div><!-- .box -->
-	
+
+
+
 </body>
 </html>
