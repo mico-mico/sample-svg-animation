@@ -5,91 +5,179 @@
 	<meta charset="UTF-8" />
 	<meta name="google" value="notranslate">
 	<meta http-equiv="content-language" content="ja">
-	<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="./common/js/jquery.fademover.js"></script>
 
 	<script>
 	$(function() {
-	    $('.box').addClass('active');
+		//あらかたけしとく
+
+		var loadingImgPos = ((jQuery(window).height() / 2) - 20) + "px";
+	        jQuery('.loader svg').css({ 'margin-top': loadingImgPos });
+	        jQuery('.loader').fadeIn('slow');
+
+	    $('.mainimg img').hide();
+	    $('.titleArea').css({opacity: 0});
+
+
+		//ページ全体ゆっくり表示
+		$('.mainimg img').on('load',function(){
+			$('body').fadeMover().promise().done(function(){
+				$('.loader').fadeOut('1000',function(){
+					$('.mainimg img').fadeIn(1000).promise().done(function(){
+		 				$('.titleArea').animate({opacity:0.5}, 2500).promise().done(function(){
+		 						$('.box').addClass('active');
+		 				});
+					});
+				});
+			});
+
+
+		});
 	});
+
 	</script>
 
 
 
 <style>
-body{
-	background: #092951;
-}
-.box{width: 520px;height: 250px; margin: 200px auto; /*border:1px solid #000;*/}
-.bd{width: 500px;height: 250px; text-align: center; position: relative;padding: 60px 0;/* border:1px solid #ffcc00;*/}
-div.bd div{background: #fff; position:absolute;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;}
+	body{
+		position: relative;
+		margin:0;
+		padding: 0;
+		background: #092951;
+		
+	}
 
-.active .bd div.bdT{width: 100%; height:1px; top:0; left:0;}
-.active .bd div.bdB{width: 100%; height:1px; bottom:0; right:0;}
-.active .bd div.bdR{height:100%; width :1px; right:0; top:0;}
-.active .bd div.bdL{height:100%; width :1px; left:0; bottom:0;}
+	.titleArea{
+		position: absolute;
+		background: #092951;
+		width: 100%;
+		height:800px;
+		opacity: 0.5;
+	}
+	.box{width: 530px;height: 250px; margin: 200px auto; /*border:1px solid #000;*/ display: hidden; }
+	.bd{width: 500px;height: 240px; text-align: center; position: relative;padding: 60px 0;/* border:1px solid #ffcc00;*/}
+	div.bd div{background: #fff; position:absolute;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;}
 
-.bd div.bdT{width: 0;}
-.bd div.bdB{width: 0;}
-.bd div.bdR{height:0;}
-.bd div.bdL{height:0;}
+	.active .bd div.bdT{width: 100%; height:1px; top:0; left:0;}
+	.active .bd div.bdB{width: 100%; height:1px; bottom:0; right:0;}
+	.active .bd div.bdR{height:100%; width :1px; right:0; top:0;}
+	.active .bd div.bdL{height:100%; width :1px; left:0; bottom:0;}
 
-.path{	/*ストロークの色や太さ*/
-	stroke:#fff;
-	fill:none;
-	stroke-width:1;
-	/*破線*/
-	stroke-DASHarray: 3000;
-	stroke-DASHoffset:3000;
-	/*アニメーション*/
-	animation: DASH 3s ease-in alternate forwards;
-	-webkit-animation:DASH 3s ease-in 0s forwards;
-	-o-animation:DASH 3s ease-in 0s forwards;
-	animation:DASH 3s ease-in 0s forwards;
-}
+	.bd div.bdT{width: 0;}
+	.bd div.bdB{width: 0;}
+	.bd div.bdR{height:0;}
+	.bd div.bdL{height:0;}
 
-@keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#092951;}
-    30% {stroke-dashoffset:2000;fill:#fff;}
-    100%{stroke-dashoffset:0;fill:#fff;}
-}
+	.path{	/*ストロークの色や太さ*/
+		stroke:#fff;
+		fill:none;
+		stroke-width:1;
+		/*破線*/
+		stroke-DASHarray: 3000;
+		stroke-DASHoffset:3000;
+		/*アニメーション*/
+		animation: DASH 3s ease-in alternate forwards;
+		-webkit-animation:DASH 3s ease-in 0s forwards;
+		-o-animation:DASH 3s ease-in 0s forwards;
+		animation:DASH 3s ease-in 0s forwards;
+	}
 
-@-moz-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#092951;}
-    30% {stroke-dashoffset:2000;fill:#fff;}
-    100%{stroke-dashoffset:0;fill:#fff;}
-}
+	@keyframes DASH{
+	    0%  {stroke-dashoffset:3000;fill:#092951;}
+	    30% {stroke-dashoffset:2000;fill:#fff;}
+	    100%{stroke-dashoffset:0;fill:#fff;}
+	}
 
-@-webkit-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#092951;}
-    30% {stroke-dashoffset:2000;fill:#fff;}
-    100%{stroke-dashoffset:0;fill:#fff;}
-}
+	@-moz-keyframes DASH{
+	    0%  {stroke-dashoffset:3000;fill:#092951;}
+	    30% {stroke-dashoffset:2000;fill:#fff;}
+	    100%{stroke-dashoffset:0;fill:#fff;}
+	}
 
-@-o-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#092951;}
-    30% {stroke-dashoffset:2000;fill:#fff;}
-    100%{stroke-dashoffset:0;fill:#fff;}
-}
+	@-webkit-keyframes DASH{
+	    0%  {stroke-dashoffset:3000;fill:#092951;}
+	    30% {stroke-dashoffset:2000;fill:#fff;}
+	    100%{stroke-dashoffset:0;fill:#fff;}
+	}
 
-@-ms-keyframes DASH{
-    0%  {stroke-dashoffset:3000;fill:#092951;}
-    30% {stroke-dashoffset:2000;fill:#fff;}
-    100%{stroke-dashoffset:0;fill:#fff;}
-}
+	@-o-keyframes DASH{
+	    0%  {stroke-dashoffset:3000;fill:#092951;}
+	    30% {stroke-dashoffset:2000;fill:#fff;}
+	    100%{stroke-dashoffset:0;fill:#fff;}
+	}
 
+	@-ms-keyframes DASH{
+	    0%  {stroke-dashoffset:3000;fill:#092951;}
+	    30% {stroke-dashoffset:2000;fill:#fff;}
+	    100%{stroke-dashoffset:0;fill:#fff;}
+	}
 
+	.guide{
+		/*border:1px solid #ff00cc;*/
+	}
 
+	.mainimg img{
+		width:100%;
+	}
 
-.guide{
-	/*border:1px solid #ff00cc;*/
-}
+	.loader{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+	}
+
+	.loader svg{
+		display: block;
+		margin:0 auto;
+		stroke:#fff;
+		fill:#fff;
+		}
 </style>
 
 
 </head>
 <body>
+
+
+<div class="loader" title="0">
+  <svg
+  	version="1.1"
+  	id="loader-1"
+  	xmlns="http://www.w3.org/2000/svg"
+  	xmlns:xlink="http://www.w3.org/1999/xlink"
+  	x="0px"
+  	y="0px"
+   	width="40px"
+   	height="40px"
+   	viewBox="0 0 40 40"
+   	enable-background="new 0 0 40 40"
+   	xml:space="preserve">
+
+  <path opacity="0.2" fill="#fff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+  <path fill="#fff" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+    C22.32,8.481,24.301,9.057,26.013,10.047z">
+    <animateTransform attributeType="xml"
+      attributeName="transform"
+      type="rotate"
+      from="0 20 20"
+      to="360 20 20"
+      dur="0.5s"
+      repeatCount="indefinite"/>
+    </path>
+  </svg>
+</div>
+
+<div class="titleArea">
 <div class="box">
 	<div class="bd">
+
+
 <svg
 	class="guide"
 	version="1.1"
@@ -211,7 +299,11 @@ div.bd div{background: #fff; position:absolute;-webkit-transition:all 1s ease-in
 	    <div class="bdL"></div>
 	</div><!-- .bd -->
 </div><!-- .box -->
+</div><!-- .titleArea -->
 
+<div class="mainimg">
+	<img src="common/img/maining.png" alt="">
+</div>
 
 
 </body>
